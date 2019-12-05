@@ -9,6 +9,6 @@ RUN apt-get -y remove apache2-dev && apt-get -y autoremove
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
  && docker-php-ext-install gd \
  && docker-php-ext-install mysqli && docker-php-ext-install exif && docker-php-ext-install zip
-RUN a2enmod rewrite && a2enmod ssl && a2enmod remoteip && a2enconf remoteip && patch -d/ -p0 < /tmp/apache2.conf.patch
+RUN a2enmod rewrite && a2enmod ssl && a2enmod remoteip && a2enconf remoteip && patch -d/etc/apache2/ -p0 < /tmp/apache2.conf.patch
 RUN ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/
 WORKDIR /
